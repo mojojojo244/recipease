@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const recipeRoutes = require('./routes/recipeRoutes');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
 
+app.use('/recipes', recipeRoutes);
 app.use(authRoutes);
 
 app.use((req, res) => {

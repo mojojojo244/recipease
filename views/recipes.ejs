@@ -4,7 +4,15 @@
   <body>
     <%- include("./partials/nav.ejs") %>
     <div class="content">
-      <h2>Recipes</h2>
+      <h2>All Recipes</h2>
+
+      <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
+      <a class="single" href="/recipes/<%= recipe._id %>">
+        <h3 class="title"><%= recipe.title %></h3>
+      </a>
+      <% }) %> <% } else { %>
+      <p>There are no recipes to display...</p>
+      <% } %>
     </div>
     <%- include("./partials/footer.ejs") %>
   </body>

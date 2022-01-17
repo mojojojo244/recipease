@@ -56,3 +56,6 @@ nav li a {
 .content {
   min-height: 80vh;
 }
+footer {
+  text-align: center;
+}
