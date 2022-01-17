@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
 app.use(express.static('public'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   res.locals.path = req.path;
@@ -16,7 +18,10 @@ const dbURI =
   'mongodb+srv://jojo:erterbernds@recipease.mna68.mongodb.net/recipease?retryWrites=true&w=majority';
 
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
 
@@ -27,6 +32,8 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
+
+app.use(authRoutes);
 
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
