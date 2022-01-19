@@ -3,6 +3,12 @@ const jwt = require('jsonwebtoken');
 
 const handleErrors = (err) => {
   let errors = { username: '', password: '' };
+  if (err.message === 'User not found') {
+    errors.username = 'User not found';
+  }
+  if (err.message === 'Incorrect password') {
+    errors.password = 'That password is not correct';
+  }
   if (err.code === 11000) {
     errors.username =
       'That username already exists; Please log in or choose a new username';
@@ -43,5 +49,13 @@ module.exports.signup_post = async (req, res) => {
 };
 module.exports.login_post = async (req, res) => {
   const { username, password } = req.body;
-  res.send('user login');
+  try {
+    const user = await User.login(username, password);
+    const token = createToken(user._id);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(200).json({ user: user._id });
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
 };
