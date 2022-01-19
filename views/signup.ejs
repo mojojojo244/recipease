@@ -16,8 +16,14 @@
   <%- include("./partials/footer.ejs") %>
   <script>
     const form = document.querySelector('form');
+    const usernameError = document.querySelector('.error.username');
+    const passwordError = document.querySelector('.error.password');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      usernameError.textContent = '';
+      passwordError.textContent = '';
       const username = form.username.value;
       const password = form.password.value;
       try {
@@ -26,6 +32,15 @@
           body: JSON.stringify({ username, password }),
           headers: { 'Content-Type': 'application/json' },
         });
+
+        const data = await res.json();
+        if (data.errors) {
+          usernameError.textContent = data.errors.username;
+          passwordError.textContent = data.errors.password;
+        }
+        if (data.user) {
+          location.assign('/');
+        }
       } catch (err) {
         console.log(err);
       }
