@@ -1,9 +1,10 @@
 const express = require('express');
 const recipeController = require('../controllers/recipeController');
+const { requireAuth } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.get('/create', recipeController.recipe_create_get);
+router.get('/create', requireAuth, recipeController.recipe_create_get);
 router.get('/', recipeController.recipe_index);
 router.post('/', recipeController.recipe_create_post);
 router.get('/:id', recipeController.recipe_details);
