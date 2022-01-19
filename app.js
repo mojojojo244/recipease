@@ -30,12 +30,9 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get('*', checkUser);
+app.post('*', checkUser);
 app.get('/', (req, res) => {
   res.render('home', { title: 'Home' });
-});
-
-app.get('/about', (req, res) => {
-  res.render('about', { title: 'About' });
 });
 
 app.use('/recipes', recipeRoutes);
