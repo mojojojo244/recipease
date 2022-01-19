@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   res.locals.path = req.path;
