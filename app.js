@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const cookieParser = require('cookie-parser');
+const { checkUser } = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -28,6 +29,7 @@ mongoose
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
 
+app.get('*', checkUser);
 app.get('/', (req, res) => {
   res.render('home', { title: 'Home' });
 });
