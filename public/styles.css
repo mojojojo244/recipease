@@ -81,6 +81,11 @@ footer {
 .fas {
   color: darkgreen;
 }
-.fas.hidden {
+.fa-trash,
+#addBtn,
+.submitBtn {
+  cursor: pointer;
+}
+.hidden {
   display: none;
 }

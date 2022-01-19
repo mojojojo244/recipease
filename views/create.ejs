@@ -7,60 +7,60 @@
         <h2>Create a New Recipe</h2>
         <label for="title">Recipe Name:</label>
         <input type="text" id="title" name="title" required />
-            <div id="ingredientContainer">
-              <div class="singleIngredient">
-                <label for="ingredientName">Ingredient:</label>
-                <input type="text" id="ingredientName" name="ingredientName" required />
-                <label for="ingredientQty">Qty:</label>
-                <input type="number" id="ingredientQty" name="ingredientQty"/>
-                <label for="qtyType">Measurement</label>
-                  <select name="qtyType" id="qtyType">
-                    <option value="cups">cup</option>
-                    <option value="lb">lb</option>
-                    <option value="tsp">tsp</option>
-                    <option value="tbsp">tbsp</option>
-                    <option value="ounce">Oz</option>
-                  </select>
-                  <i class="fas fa-plus plus"></i>
-                  <i class="fas fa-edit hidden"></i>
-              </div>
+        <button type="button" id='addBtn'>Add Ingredient</button>
+        <input type="number" id='count' name='count' class='hidden'>
+        <div id="ingredientContainer">
+             
             </div>
-        <!-- <label for="body">Recipe Instructions:</label>
-        <textarea id="body" name="body" required></textarea> -->
-        <button>Submit</button>
+        <label for="body">Recipe Instructions:</label>
+        <textarea id="body" name="body" required></textarea>
+        <button class='submitBtn'>Submit</button>
       </form>
     </div>
     <%- include("./partials/footer.ejs") %>
     <script>
-      const addIngredient = document.querySelector('.plus')
+      
+      const countInput = document.getElementById('count')
+      const addIngredient = document.getElementById('addBtn')
       const ingredientContainer = document.getElementById(
         'ingredientContainer'
       )
       addIngredient.addEventListener('click', ()=>{
-        const ingredientInput = document.createElement('div');
-          ingredientInput.innerHTML = `<div class="ingredient">
-    <label for="ingredientName">Ingredient:</label>
-    <input type="text" id="ingredientName" name="ingredientName" required />
-    
-    <label for="ingredientQty">Qty:</label>
-    <input type="number" id="ingredientQty" name="ingredientQty"/>
-
-    <label for"qtyType">Measurement</label>
-    <select name="qtyType" id="qtyType">
-      <option value="cups">cup</option>
-      <option value="lb">lb</option>
-      <option value="tsp">tsp</option>
-      <option value="tbsp">tbsp</option>
-      <option value="ounce">Oz</option>
-     </select>
-     <i class="fas fa-plus" id="plus"></i>
-      <i class="fas fa-edit hidden"></i> 
-      <i class="fas fa-minus "></i> 
+        
+        const nextInput = document.createElement('div');
+        nextInput.classList.add('singleIngredient')
+        nextInput.innerHTML = 
+        ` <label for="ingredientName">Ingredient:</label>
+        <input type="text" id="ingredientName" name="ingredientName" required />
+        
+        <label for="ingredientQty">Qty:</label>
+        <input type="number" id="ingredientQty" name="ingredientQty"/>
+        
+        <label for"qtyType">Measurement:</label>
+        <select name="qtyType" id="qtyType">
+          <option value="cups">cup</option>
+          <option value="lb">lb</option>
+          <option value="tsp">tsp</option>
+          <option value="tbsp">tbsp</option>
+          <option value="ounce">Oz</option>
+          </select>
+          <i class="fa fa-trash" aria-hidden="true"></i> `;
           
-    </div>`;
-
-          ingredientContainer.appendChild(ingredientInput);
+          ingredientContainer.appendChild(nextInput);
+          countInput.value = ingredientContainer.childElementCount
+          
+          
+          
+          const deleteBtn = document.querySelectorAll('.fa-trash')
+          deleteBtn.forEach((el)=>{
+            el.addEventListener('click', (e)=>{
+              e.target.parentNode.remove()
+              countInput.value = ingredientContainer.childElementCount
+              
+            })
+          })
       })
+
 
     </script>
   </body>
