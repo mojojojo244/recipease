@@ -2,7 +2,24 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <h2>Sign Up</h2>
+    <form>
+      <h2>Sign Up</h2>
+      <label for="username">Username:</label>
+      <input type="text" name="username" required />
+      <div class="error username"></div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" required />
+      <div class="error password"></div>
+      <button>Sign Up</button>
+    </form>
   </div>
   <%- include("./partials/footer.ejs") %>
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = form.username.value;
+      const password = form.password.value;
+    });
+  </script>
 </body>
