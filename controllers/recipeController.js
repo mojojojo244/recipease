@@ -42,7 +42,6 @@ const recipe_create_post = (req, res) => {
     ingredients: ingArr,
     body: req.body.body,
   };
-  console.log(newRecipe);
   const recipe = new Recipe(newRecipe);
   recipe
     .save()

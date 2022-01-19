@@ -1,22 +1,16 @@
-<html lang="en">
-  <%- include("./partials/head.ejs") %>
-
-  <body>
-    <%- include("./partials/nav.ejs") %>
-
-    <div class="content">
-      <h2><%= recipe.title %></h2>
-      <div id="ingredientsList">
-        <% recipe.ingredients.forEach((el)=> { %>
-        <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
-
-        <% }) %>
-      </div>
-      <div>
-        <p><%= recipe.body %></p>
-      </div>
+<%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <div class="content">
+    <h2><%= recipe.title %></h2>
+    <div id="ingredientsList">
+      <% recipe.ingredients.forEach((el)=> { %>
+      <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
+      <% }) %>
     </div>
-
-    <%- include("./partials/footer.ejs") %>
-  </body>
-</html>
+    <div>
+      <p><%= recipe.body %></p>
+    </div>
+  </div>
+  <%- include("./partials/footer.ejs") %>
+</body>
