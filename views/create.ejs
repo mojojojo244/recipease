@@ -2,7 +2,7 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <form action="/recipes" method="POST">
+    <form action="/recipes" method="POST" enctype="multipart/form-data">
       <h2>Create a New Recipe</h2>
       <label for="title">Recipe Name:</label>
       <input type="text" id="title" name="title" required />
@@ -11,6 +11,8 @@
       <div id="ingredientContainer"></div>
       <label for="body">Recipe Instructions:</label>
       <textarea id="body" name="body" required></textarea>
+      <label for="image">Upload Image:</label>
+      <input type="file" name="image" accept="image/*" />
       <button class="submitBtn">Submit</button>
     </form>
   </div>

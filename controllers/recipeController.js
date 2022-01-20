@@ -28,7 +28,7 @@ const recipe_create_get = (req, res) => {
 };
 
 const recipe_create_post = (req, res) => {
-  res.locals.user.username;
+  console.log(req.file);
   const ingArr = [];
   const count = req.body.count;
   for (let i = 0; i < count; i++) {
@@ -43,6 +43,7 @@ const recipe_create_post = (req, res) => {
     ingredients: ingArr,
     body: req.body.body,
     user: res.locals.user.username,
+    image: req.file.path,
   };
   const recipe = new Recipe(newRecipe);
   recipe
