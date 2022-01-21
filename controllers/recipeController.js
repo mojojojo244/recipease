@@ -73,8 +73,6 @@ const recipe_edit_get = (req, res) => {
   Recipe.findById(id)
     .then((result) => {
       res.render('edit', { recipe: result, title: 'Edit Recipe' });
-      console.log(result);
-      console.log(result.ingredients.length);
     })
     .catch((err) => {
       console.log(err);
@@ -82,15 +80,39 @@ const recipe_edit_get = (req, res) => {
     });
 };
 
-const recipe_edit_post = (req, res) => {
-  console.log('hello');
+const recipe_edit_put = async (req, res) => {
+  const ingArr = [];
+  const count = req.body.count;
+  for (let i = 0; i < count; i++) {
+    ingArr[i] = {
+      ingredient: req.body.ingredientName[i],
+      qty: req.body.ingredientQty[i],
+      qtyType: req.body.qtyType[i],
+    };
+  }
+  let recipe = await Recipe.findById(req.params.id);
+  recipe.title = req.body.title;
+  recipe.category = req.body.category;
+  recipe.ingredients = ingArr;
+  recipe.body = req.body.body;
+  recipe.user = res.locals.user.username;
+  recipe.image = req.file.path;
+
+  recipe
+    .save()
+    .then((result) => {
+      res.redirect('/recipes/myRecipes');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const recipe_delete = (req, res) => {
   const id = req.params.id;
   Recipe.findByIdAndDelete(id)
     .then((result) => {
-      res.json({ redirect: '/recipes' });
+      res.redirect('/recipes/myRecipes');
     })
     .catch((err) => {
       console.log(err);
@@ -105,5 +127,5 @@ module.exports = {
   myRecipes_get,
   recipe_delete,
   recipe_edit_get,
-  recipe_edit_post,
+  recipe_edit_put,
 };

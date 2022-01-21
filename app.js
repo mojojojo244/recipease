@@ -4,12 +4,14 @@ const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
+const methodOverride = require('method-override');
 
 const app = express();
 
 //middleware
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
+app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +37,7 @@ mongoose
 //Routes
 app.get('*', checkUser);
 app.post('*', checkUser);
+app.put('*', checkUser);
 app.get('/', (req, res) => {
   res.render('home', { title: 'Home' });
 });

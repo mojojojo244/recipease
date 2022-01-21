@@ -16,7 +16,10 @@
           </div>
           <h3 class="title"><%= recipe.title %></h3>
         </a>
-        <a href="/recipes/edit/<%= recipe.id %>">Edit</a>
+        <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
+        <form method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
+          <button type="submit">Delete</button>
+        </form>
       </div>
       <% }) %> <% } else { %>
       <p>There are no recipes to display...</p>
