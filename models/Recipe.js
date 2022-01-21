@@ -7,6 +7,10 @@ const recipeSchema = new Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     ingredients: {
       type: Array,
       required: true,
@@ -21,6 +25,7 @@ const recipeSchema = new Schema(
     },
     image: {
       type: String,
+      required: true,
     },
   },
   { timestamps: true }

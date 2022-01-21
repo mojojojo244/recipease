@@ -63,7 +63,7 @@ form h2 {
   margin-bottom: 40px;
 }
 form {
-  width: 750vw;
+  width: 75vw;
   margin: 0 auto;
   padding: 30px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
@@ -78,9 +78,6 @@ footer {
   text-align: center;
 }
 
-.fas {
-  color: darkgreen;
-}
 .fa-trash,
 #addBtn,
 .submitBtn {
@@ -88,4 +85,12 @@ footer {
 }
 .hidden {
   display: none;
+}
+
+.recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#recipeImage {
+  width: 250px;
 }

@@ -3,14 +3,14 @@
   <%- include("./partials/nav.ejs") %>
   <div class="content">
     <h2><%= recipe.title %></h2>
+    <p><%= recipe.category %></p>
+    <div class="imgContainer">
+      <img src="/<%= recipe.image %>" alt="recipeImage" />
+    </div>
     <div id="ingredientsList">
       <% recipe.ingredients.forEach((el)=> { %>
       <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
       <% }) %>
-    </div>
-    <div>
-      <img src="/<%= recipe.image %>" alt="recipeImage" />
-      <p><%= recipe.image %></p>
     </div>
     <div>
       <p><%= recipe.body %></p>

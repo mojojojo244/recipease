@@ -6,6 +6,14 @@
       <h2>Create a New Recipe</h2>
       <label for="title">Recipe Name:</label>
       <input type="text" id="title" name="title" required />
+      <label for="category">Category:</label>
+      <select name="category" id="category">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="dessert">Dessert</option>
+        <option value="snack">Snack</option>
+      </select>
       <button type="button" id="addBtn">Add Ingredient</button>
       <input type="number" id="count" name="count" class="hidden" />
       <div id="ingredientContainer"></div>

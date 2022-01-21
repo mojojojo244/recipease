@@ -28,7 +28,6 @@ const recipe_create_get = (req, res) => {
 };
 
 const recipe_create_post = (req, res) => {
-  console.log(req.file);
   const ingArr = [];
   const count = req.body.count;
   for (let i = 0; i < count; i++) {
@@ -40,6 +39,7 @@ const recipe_create_post = (req, res) => {
   }
   const newRecipe = {
     title: req.body.title,
+    category: req.body.category,
     ingredients: ingArr,
     body: req.body.body,
     user: res.locals.user.username,
