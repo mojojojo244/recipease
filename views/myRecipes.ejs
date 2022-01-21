@@ -16,7 +16,7 @@
           </div>
           <h3 class="title"><%= recipe.title %></h3>
         </a>
-        <p>edit</p>
+        <a href="/recipes/edit/<%= recipe.id %>">Edit</a>
       </div>
       <% }) %> <% } else { %>
       <p>There are no recipes to display...</p>

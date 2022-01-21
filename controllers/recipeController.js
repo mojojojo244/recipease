@@ -68,6 +68,24 @@ const myRecipes_get = (req, res) => {
     });
 };
 
+const recipe_edit_get = (req, res) => {
+  const id = req.params.id;
+  Recipe.findById(id)
+    .then((result) => {
+      res.render('edit', { recipe: result, title: 'Edit Recipe' });
+      console.log(result);
+      console.log(result.ingredients.length);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render('404', { title: 'Recipe Not Found' });
+    });
+};
+
+const recipe_edit_post = (req, res) => {
+  console.log('hello');
+};
+
 const recipe_delete = (req, res) => {
   const id = req.params.id;
   Recipe.findByIdAndDelete(id)
@@ -86,4 +104,6 @@ module.exports = {
   recipe_create_post,
   myRecipes_get,
   recipe_delete,
+  recipe_edit_get,
+  recipe_edit_post,
 };
