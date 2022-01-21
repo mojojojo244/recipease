@@ -56,6 +56,18 @@ const recipe_create_post = (req, res) => {
     });
 };
 
+const myRecipes_get = (req, res) => {
+  const user = res.locals.user.username;
+  Recipe.find({ user: user })
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('myRecipes', { recipes: result, title: 'My Recipes' });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const recipe_delete = (req, res) => {
   const id = req.params.id;
   Recipe.findByIdAndDelete(id)
@@ -72,5 +84,6 @@ module.exports = {
   recipe_details,
   recipe_create_get,
   recipe_create_post,
+  myRecipes_get,
   recipe_delete,
 };

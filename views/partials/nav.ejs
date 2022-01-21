@@ -13,5 +13,8 @@
     <% } %>
     <li><a href="/recipes">Recipes</a></li>
     <li><a href="/recipes/create">New Recipe</a></li>
+    <% if(user){ %>
+    <li><a href="/recipes/myRecipes">My Recipes</a></li>
+    <% } %>
   </ul>
 </nav>

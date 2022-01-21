@@ -30,6 +30,7 @@ const upload = multer({
 const router = express.Router();
 
 router.get('/create', requireAuth, recipeController.recipe_create_get);
+router.get('/myRecipes', requireAuth, recipeController.myRecipes_get);
 router.get('/', recipeController.recipe_index);
 router.post('/', upload.single('image'), recipeController.recipe_create_post);
 router.get('/:id', recipeController.recipe_details);
