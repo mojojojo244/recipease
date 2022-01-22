@@ -18,6 +18,12 @@
         </a>
         <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
         <form method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
+          <input
+            type="text"
+            name="path"
+            class="hidden"
+            value="<%= recipe.image%>"
+          />
           <button type="submit">Delete</button>
         </form>
       </div>

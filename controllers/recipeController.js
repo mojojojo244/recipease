@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe');
+const fs = require('fs');
 
 const recipe_index = (req, res) => {
   Recipe.find()
@@ -58,6 +59,7 @@ const recipe_create_post = (req, res) => {
 
 const myRecipes_get = (req, res) => {
   const user = res.locals.user.username;
+
   Recipe.find({ user: user })
     .sort({ createdAt: -1 })
     .then((result) => {
@@ -109,7 +111,9 @@ const recipe_edit_put = async (req, res) => {
 };
 
 const recipe_delete = (req, res) => {
+  console.log(req.body);
   const id = req.params.id;
+  const path = req.body.path;
   Recipe.findByIdAndDelete(id)
     .then((result) => {
       res.redirect('/recipes/myRecipes');
@@ -117,6 +121,12 @@ const recipe_delete = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+  fs.unlink(path, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+  });
 };
 
 module.exports = {
