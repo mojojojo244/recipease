@@ -6,13 +6,14 @@
       action="/recipes"
       method="POST"
       class="form"
+      autocomplete="off"
       enctype="multipart/form-data"
     >
       <h2>Create a New Recipe</h2>
       <label for="title">Recipe Name:</label>
       <input type="text" id="title" name="title" required />
       <label for="category">Category:</label>
-      <select name="category" id="category">
+      <select name="category" id="category" required>
         <option value="breakfast">Breakfast</option>
         <option value="lunch">Lunch</option>
         <option value="dinner">Dinner</option>
@@ -20,18 +21,73 @@
         <option value="snack">Snack</option>
       </select>
       <button type="button" id="addBtn">Add Ingredient</button>
-      <input type="number" id="count" name="count" class="hidden" />
-      <div id="ingredientContainer"></div>
+      <div id="ingredientContainer">
+        <div class="singleIngredient">
+          <label for="ingredientName">Ingredient:</label>
+          <input
+            type="text"
+            id="ingredientName"
+            name="ingredientName"
+            required
+          />
+
+          <label for="ingredientQty">Qty:</label>
+          <input
+            type="number"
+            id="ingredientQty"
+            name="ingredientQty"
+            step="any"
+            placeholder="1"
+            required
+          />
+          <label for="qtyType">Measurement:</label>
+          <select name="qtyType" id="qtyType" required>
+            <option value="cups">cup</option>
+            <option value="lb">lb</option>
+            <option value="tsp">tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="ounce">Oz</option>
+          </select>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>
+        <div class="singleIngredient">
+          <label for="ingredientName">Ingredient:</label>
+          <input
+            type="text"
+            id="ingredientName"
+            name="ingredientName"
+            required
+          />
+
+          <label for="ingredientQty">Qty:</label>
+          <input
+            type="number"
+            id="ingredientQty"
+            name="ingredientQty"
+            step="any"
+            placeholder="1"
+            required
+          />
+          <label for="qtyType">Measurement:</label>
+          <select name="qtyType" id="qtyType" required>
+            <option value="cups">cup</option>
+            <option value="lb">lb</option>
+            <option value="tsp">tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="ounce">Oz</option>
+          </select>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>
+      </div>
       <label for="body">Recipe Instructions:</label>
       <textarea id="body" name="body" required></textarea>
       <label for="image">Upload Image:</label>
-      <input type="file" name="image" accept="image/*" />
+      <input type="file" name="image" accept="image/*" required />
       <button class="submitBtn">Submit</button>
     </form>
   </div>
   <%- include("./partials/footer.ejs") %>
   <script>
-    const countInput = document.getElementById('count');
     const addIngredient = document.getElementById('addBtn');
     const ingredientContainer = document.getElementById('ingredientContainer');
     addIngredient.addEventListener('click', () => {
@@ -40,9 +96,9 @@
       nextInput.innerHTML = ` <label for="ingredientName">Ingredient:</label>
         <input type="text" id="ingredientName" name="ingredientName" required />
         <label for="ingredientQty">Qty:</label>
-        <input type="number" id="ingredientQty" name="ingredientQty"/>
-        <label for"qtyType">Measurement:</label>
-        <select name="qtyType" id="qtyType">
+        <input type="number" id="ingredientQty" placeholder='1'name="ingredientQty" step="any" required/>
+        <label for="qtyType">Measurement:</label>
+        <select name="qtyType" id="qtyType"required>
           <option value="cups">cup</option>
           <option value="lb">lb</option>
           <option value="tsp">tsp</option>
@@ -51,12 +107,10 @@
           </select>
           <i class="fa fa-trash" aria-hidden="true"></i> `;
       ingredientContainer.appendChild(nextInput);
-      countInput.value = ingredientContainer.childElementCount;
       const deleteBtn = document.querySelectorAll('.fa-trash');
       deleteBtn.forEach((el) => {
         el.addEventListener('click', (e) => {
           e.target.parentNode.remove();
-          countInput.value = ingredientContainer.childElementCount;
         });
       });
     });

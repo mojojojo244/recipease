@@ -30,7 +30,7 @@ const recipe_create_get = (req, res) => {
 
 const recipe_create_post = (req, res) => {
   const ingArr = [];
-  const count = req.body.count;
+  const count = req.body.ingredientName.length;
   for (let i = 0; i < count; i++) {
     ingArr[i] = {
       ingredient: req.body.ingredientName[i],
