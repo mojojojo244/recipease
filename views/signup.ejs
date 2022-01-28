@@ -2,7 +2,7 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <form>
+    <form class="loginForm">
       <h2>Sign Up</h2>
       <label for="username">Username:</label>
       <input type="text" name="username" required />
@@ -10,7 +10,7 @@
       <label for="password">Password:</label>
       <input type="password" name="password" required />
       <div class="error password"></div>
-      <button>Sign Up</button>
+      <button class="btn" id="signBtn">Sign Up</button>
     </form>
   </div>
   <%- include("./partials/footer.ejs") %>

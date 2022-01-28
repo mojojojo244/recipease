@@ -2,7 +2,8 @@
 body {
   font-size: 1.2rem;
   letter-spacing: 1px;
-  background: #fafafa;
+  /* background: #fafafa; */
+  background: hsl(205, 78%, 60%);
   margin: 0px;
 }
 h1,
@@ -31,32 +32,24 @@ a {
   text-decoration: none;
 }
 
-/* nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 50px;
-}
-nav ul {
-  display: flex;
-  align-items: center;
-}
-nav li {
-  margin-left: 20px;
-}
-nav li a {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 0.8em;
-  display: block;
-  padding: 10px 16px;
-  letter-spacing: 2px;
-} */
-
 .content {
   min-height: 80vh;
 }
-
+.loginForm {
+  min-width: 15vw;
+  width: 15vw;
+  min-height: 30vh;
+  margin: auto;
+  margin-top: 30px;
+  padding: 15px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .form {
   width: 60vw;
   min-height: 60vh;
@@ -86,6 +79,9 @@ footer {
 }
 .hidden {
   display: none;
+}
+.error {
+  color: rgb(99, 7, 7);
 }
 
 .recipes {
@@ -120,6 +116,11 @@ footer {
 #submitBtn {
   width: 400px;
 }
+#submitBtn:hover,
+#loginBtn:hover,
+#signBtn:hover {
+  background: hsl(205, 78%, 60%);
+}
 .inputDiv {
   margin: 10px;
 }
@@ -149,6 +150,7 @@ Navbar
 nav {
   background: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-width: 530px;
 }
 .nav-header {
   display: flex;
@@ -156,6 +158,7 @@ nav {
   justify-content: space-between;
   padding: 1rem;
 }
+
 .nav-toggle {
   font-size: 1.5rem;
   color: hsl(205, 78%, 60%);
@@ -168,7 +171,8 @@ nav {
   color: hsl(205, 86%, 17%);
   transform: rotate(90deg);
 }
-.links a {
+.links a,
+#welcome {
   color: hsl(209, 34%, 30%);
   font-size: 1rem;
   text-transform: uppercase;
@@ -194,7 +198,10 @@ nav {
 .show-links {
   height: 10rem;
 }
-@media screen and (min-width: 800px) {
+#welcome {
+  margin-left: 20vw;
+}
+@media screen and (min-width: 1200px) {
   .nav-center {
     max-width: 80vw;
     margin: 0 auto;

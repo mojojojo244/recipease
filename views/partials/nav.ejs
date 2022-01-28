@@ -2,13 +2,15 @@
   <div class="nav-center">
     <div class="nav-header">
       <a href="/"><h1>RECIP-EASE</h1></a>
+      <% if(user){ %>
+      <span id="welcome">Welcome, <%=user.username %></span>
+      <% } %>
       <button class="nav-toggle">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <% if(user){ %>
-    <span class="links">Welcome, <%=user.username %></span>
     <ul class="links">
+      <% if(user){ %>
       <li><a href="/logout">Logout</a></li>
       <% } else { %>
       <li><a href="/login">Login</a></li>
@@ -18,7 +20,16 @@
       <% if(user){ %>
       <li><a href="/recipes/create">New Recipe</a></li>
       <li><a href="/recipes/myRecipes">My Recipes</a></li>
+
       <% } %>
     </ul>
   </div>
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.links');
+
+    navToggle.addEventListener('click', function () {
+      links.classList.toggle('show-links');
+    });
+  </script>
 </nav>

@@ -2,15 +2,15 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <form>
+    <form class="loginForm">
       <h2>Login</h2>
       <label for="username">Username:</label>
-      <input type="text" name="username" required />
+      <input type="text" name="username" autocomplete="off" required />
       <div class="error username"></div>
       <label for="password">Password:</label>
       <input type="password" name="password" required />
       <div class="error password"></div>
-      <button>Login</button>
+      <button id="loginBtn" class="btn">Login</button>
     </form>
   </div>
   <%- include("./partials/footer.ejs") %>
