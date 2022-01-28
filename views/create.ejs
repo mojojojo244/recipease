@@ -87,14 +87,21 @@
       <label for="body">Recipe Instructions:</label>
       <textarea id="body" name="body" required></textarea>
       <div class="inputDiv">
-        <label for="image">Upload Image:</label>
-        <input type="file" name="image" accept="image/*" required />
+        <label for="image" class="customUpload btn">Upload Image</label>
+        <span id="selectedFile">No file selected</span>
+        <input type="file" id="image" name="image" accept="image/*" required />
       </div>
       <button class="btn" id="submitBtn">Submit</button>
     </form>
   </div>
   <%- include("./partials/footer.ejs") %>
   <script>
+    const image = document.getElementById('image');
+    const selectedImage = document.getElementById('selectedFile');
+    image.addEventListener('change', () => {
+      const fileName = image.value;
+      selectedImage.innerText = fileName.replace(/^.*\\/, '');
+    });
     const addIngredient = document.getElementById('addBtn');
     const ingredientContainer = document.getElementById('ingredientContainer');
     addIngredient.addEventListener('click', () => {

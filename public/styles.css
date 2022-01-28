@@ -2,7 +2,6 @@
 body {
   font-size: 1.2rem;
   letter-spacing: 1px;
-  /* background: #fafafa; */
   background: hsl(205, 78%, 60%);
   margin: 0px;
 }
@@ -52,6 +51,7 @@ a {
 }
 .form {
   width: 60vw;
+  min-width: 580px;
   min-height: 60vh;
   margin: auto;
   margin-top: 30px;
@@ -118,7 +118,8 @@ footer {
 }
 #submitBtn:hover,
 #loginBtn:hover,
-#signBtn:hover {
+#signBtn:hover,
+.customUpload:hover {
   background: hsl(205, 78%, 60%);
 }
 .inputDiv {
@@ -142,6 +143,9 @@ footer {
   text-align: center;
   text-transform: capitalize;
 }
+input[type='file'] {
+  display: none;
+}
 /*
 =============== 
 Navbar
@@ -150,7 +154,7 @@ Navbar
 nav {
   background: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  min-width: 530px;
+  min-width: 640px;
 }
 .nav-header {
   display: flex;
@@ -201,7 +205,7 @@ nav {
 #welcome {
   margin-left: 20vw;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1305px) {
   .nav-center {
     max-width: 80vw;
     margin: 0 auto;
@@ -212,6 +216,8 @@ nav {
   }
   .nav-header {
     padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .nav-toggle {
     display: none;
@@ -219,6 +225,8 @@ nav {
   .links {
     height: auto;
     display: flex;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .links a {
     padding: 0;
