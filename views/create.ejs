@@ -1,6 +1,7 @@
 <%- include("./partials/head.ejs") %>
 <body>
   <%- include("./partials/nav.ejs") %>
+  <h2>Create a New Recipe</h2>
   <div class="content">
     <form
       action="/recipes"
@@ -9,18 +10,19 @@
       autocomplete="off"
       enctype="multipart/form-data"
     >
-      <h2>Create a New Recipe</h2>
-      <label for="title">Recipe Name:</label>
-      <input type="text" id="title" name="title" required />
-      <label for="category">Category:</label>
-      <select name="category" id="category" required>
-        <option value="breakfast">Breakfast</option>
-        <option value="lunch">Lunch</option>
-        <option value="dinner">Dinner</option>
-        <option value="dessert">Dessert</option>
-        <option value="snack">Snack</option>
-      </select>
-      <button type="button" id="addBtn">Add Ingredient</button>
+      <div class="inputDiv">
+        <label for="title">Recipe Name:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="category">Category:</label>
+        <select name="category" id="category" required>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+          <option value="dessert">Dessert</option>
+          <option value="snack">Snack</option>
+        </select>
+      </div>
+
       <div id="ingredientContainer">
         <div class="singleIngredient">
           <label for="ingredientName">Ingredient:</label>
@@ -79,11 +81,16 @@
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
       </div>
+      <button type="button" id="addBtn" class="btn">
+        <i class="fas fa-plus"></i>
+      </button>
       <label for="body">Recipe Instructions:</label>
       <textarea id="body" name="body" required></textarea>
-      <label for="image">Upload Image:</label>
-      <input type="file" name="image" accept="image/*" required />
-      <button class="submitBtn">Submit</button>
+      <div class="inputDiv">
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" accept="image/*" required />
+      </div>
+      <button class="btn" id="submitBtn">Submit</button>
     </form>
   </div>
   <%- include("./partials/footer.ejs") %>

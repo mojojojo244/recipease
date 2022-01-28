@@ -4,6 +4,7 @@
   <div class="content">
     <h2>All Recipes</h2>
     <div class="recipes">
+      <div id="sort"></div>
       <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
       <a class="single" href="/recipes/<%= recipe._id %>">
         <div class="imgContainer">

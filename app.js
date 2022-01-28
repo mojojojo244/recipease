@@ -5,6 +5,7 @@ const recipeRoutes = require('./routes/recipeRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
 const methodOverride = require('method-override');
+require('dotenv').config({ path: './config.env' });
 
 const app = express();
 
@@ -23,15 +24,16 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 
 //DB connection
-const dbURI =
-  'mongodb+srv://jojo:erterbernds@recipease.mna68.mongodb.net/recipease?retryWrites=true&w=majority';
-
+const dbURI = process.env.MONGO_URI;
+const PORT = process.env.PORT || 3000;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((result) => app.listen(3000))
+  .then((result) =>
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+  )
   .catch((err) => console.log(err));
 
 //Routes
