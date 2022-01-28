@@ -2,34 +2,39 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <h2>My Recipes</h2>
-    <div class="recipes">
-      <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
-      <div>
-        <a class="single" href="/recipes/<%= recipe._id %>">
-          <div class="imgContainer">
-            <img
-              src="/<%= recipe.image %>"
-              alt="recipeImage"
-              id="recipeImage"
-            />
+    <div class="recipeContainer">
+      <h2>My Recipes</h2>
+      <div class="recipes">
+        <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
+        <div class="singleMy">
+          <a class="single" href="/recipes/<%= recipe._id %>">
+            <div class="imgContainer">
+              <img
+                src="/<%= recipe.image %>"
+                alt="recipeImage"
+                id="recipeImage"
+              />
+            </div>
+            <h3><%= recipe.title %></h3>
+          </a>
+          <div class="editContainer">
+            <a href="/recipes/<%= recipe.id %>/edit"
+              ><i class="fas fa-edit"></i
+            ></a>
+            <form
+              method="POST"
+              action="/recipes/<%= recipe._id %>?_method=DELETE"
+            >
+              <button type="submit" id="deleteBtn">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </form>
           </div>
-          <h3 class="title"><%= recipe.title %></h3>
-        </a>
-        <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
-        <form method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
-          <input
-            type="text"
-            name="path"
-            class="hidden"
-            value="<%= recipe.image%>"
-          />
-          <button type="submit">Delete</button>
-        </form>
+        </div>
+        <% }) %> <% } else { %>
+        <p>There are no recipes to display...</p>
+        <% } %>
       </div>
-      <% }) %> <% } else { %>
-      <p>There are no recipes to display...</p>
-      <% } %>
     </div>
   </div>
   <%- include("./partials/footer.ejs") %>

@@ -2,19 +2,24 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <h2>All Recipes</h2>
-    <div class="recipes">
-      <div id="sort"></div>
-      <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
-      <a class="single" href="/recipes/<%= recipe._id %>">
-        <div class="imgContainer">
-          <img src="/<%= recipe.image %>" alt="recipeImage" id="recipeImage" />
-        </div>
-        <h3 class="title"><%= recipe.title %></h3>
-      </a>
-      <% }) %> <% } else { %>
-      <p>There are no recipes to display...</p>
-      <% } %>
+    <div class="recipeContainer">
+      <h2>All Recipes</h2>
+      <div class="recipes">
+        <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
+        <a class="single" href="/recipes/<%= recipe._id %>">
+          <div class="imgContainer">
+            <img
+              src="/<%= recipe.image %>"
+              alt="recipeImage"
+              id="recipeImage"
+            />
+          </div>
+          <h3><%= recipe.title %></h3>
+        </a>
+        <% }) %> <% } else { %>
+        <p>There are no recipes to display...</p>
+        <% } %>
+      </div>
     </div>
   </div>
   <%- include("./partials/footer.ejs") %>
