@@ -1,7 +1,6 @@
 <%- include("./partials/head.ejs") %>
 <body>
   <%- include("./partials/nav.ejs") %>
-  <h2>Create a New Recipe</h2>
   <div class="content">
     <form
       action="/recipes"
@@ -10,6 +9,7 @@
       autocomplete="off"
       enctype="multipart/form-data"
     >
+      <h2 class="title">Create a New Recipe</h2>
       <div class="inputDiv">
         <label for="title">Recipe Name:</label>
         <input type="text" id="title" name="title" required />

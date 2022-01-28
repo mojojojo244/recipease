@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 body {
-  margin: 20px 40px;
   font-size: 1.2rem;
   letter-spacing: 1px;
   background: #fafafa;
+  margin: 0px;
 }
 h1,
 h2,
@@ -31,7 +31,7 @@ a {
   text-decoration: none;
 }
 
-nav {
+/* nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -51,7 +51,7 @@ nav li a {
   display: block;
   padding: 10px 16px;
   letter-spacing: 2px;
-}
+} */
 
 .content {
   min-height: 80vh;
@@ -60,7 +60,8 @@ nav li a {
 .form {
   width: 60vw;
   min-height: 60vh;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 30px;
   padding: 30px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -121,4 +122,103 @@ footer {
 }
 .inputDiv {
   margin: 10px;
+}
+.singleIngredient {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3px;
+}
+#ingredientContainer {
+  width: 35vw;
+}
+.fa-trash {
+  transition: all 0.3s linear;
+}
+.fa-trash:hover {
+  color: rgb(99, 7, 7);
+}
+.title {
+  text-align: center;
+  text-transform: capitalize;
+}
+/*
+=============== 
+Navbar
+===============
+*/
+nav {
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.nav-toggle {
+  font-size: 1.5rem;
+  color: hsl(205, 78%, 60%);
+  background: transparent;
+  border-color: transparent;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  color: hsl(205, 86%, 17%);
+  transform: rotate(90deg);
+}
+.links a {
+  color: hsl(209, 34%, 30%);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s linear;
+  font-weight: 700;
+}
+.links a:hover {
+  background: hsl(205, 86%, 81%);
+  color: hsl(205, 78%, 60%);
+  padding-left: 1.5rem;
+}
+#title {
+  transition: all 0.3s linear;
+}
+.links {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s linear;
+}
+.show-links {
+  height: 10rem;
+}
+@media screen and (min-width: 800px) {
+  .nav-center {
+    max-width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .nav-header {
+    padding: 0;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .links {
+    height: auto;
+    display: flex;
+  }
+  .links a {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+  .links a:hover {
+    padding: 0;
+    background: transparent;
+  }
 }
