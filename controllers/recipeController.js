@@ -84,7 +84,7 @@ const recipe_edit_get = (req, res) => {
 
 const recipe_edit_put = async (req, res) => {
   const ingArr = [];
-  const count = req.body.count;
+  const count = req.body.ingredientName.length;
   for (let i = 0; i < count; i++) {
     ingArr[i] = {
       ingredient: req.body.ingredientName[i],
@@ -128,6 +128,19 @@ const recipe_delete = (req, res) => {
   });
 };
 
+const recipe_category_get = (req, res) => {
+  const category = req.params.category;
+
+  Recipe.find({ category: category })
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('recipes', { recipes: result, title: 'My Recipes' });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 module.exports = {
   recipe_index,
   recipe_details,
@@ -137,4 +150,5 @@ module.exports = {
   recipe_delete,
   recipe_edit_get,
   recipe_edit_put,
+  recipe_category_get,
 };

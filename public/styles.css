@@ -162,6 +162,11 @@ input[type='file'] {
   border-radius: 10px;
   text-align: center;
 }
+#titleContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .single,
 .singleMy {
   margin-top: 20px;

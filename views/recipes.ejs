@@ -3,7 +3,17 @@
   <%- include("./partials/nav.ejs") %>
   <div class="content">
     <div class="recipeContainer">
-      <h2>All Recipes</h2>
+      <div id="titleContainer">
+        <input type="text" />
+        <h2>All Recipes</h2>
+        <ul class="links" id="categoryList">
+          <li><a href="/recipes/category/breakfast">breakfast</a></li>
+          <li><a href="/recipes/category/lunch">lunch</a></li>
+          <li><a href="/recipes/category/dinner">dinner</a></li>
+          <li><a href="/recipes/category/dessert">dessert</a></li>
+          <li><a href="/recipes/category/snack">snack</a></li>
+        </ul>
+      </div>
       <div class="recipes">
         <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
         <a class="single" href="/recipes/<%= recipe._id %>">
