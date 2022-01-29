@@ -113,6 +113,7 @@ const recipe_edit_put = async (req, res) => {
 const recipe_delete = (req, res) => {
   const id = req.params.id;
   const path = req.body.path;
+  console.log(req.params);
   Recipe.findByIdAndDelete(id)
     .then((result) => {
       res.redirect('/recipes/myRecipes');

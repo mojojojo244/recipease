@@ -25,6 +25,12 @@
               method="POST"
               action="/recipes/<%= recipe._id %>?_method=DELETE"
             >
+              <input
+                type="text"
+                name="path"
+                class="hidden"
+                value="<%= recipe.image%>"
+              />
               <button type="submit" id="deleteBtn">
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
