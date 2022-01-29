@@ -2,18 +2,22 @@
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="content">
-    <h2><%= recipe.title %></h2>
-    <p><%= recipe.category %></p>
-    <div class="imgContainer">
-      <img src="/<%= recipe.image %>" alt="recipeImage" />
-    </div>
-    <div id="ingredientsList">
-      <% recipe.ingredients.forEach((el)=> { %>
-      <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
-      <% }) %>
-    </div>
-    <div>
-      <p><%= recipe.body %></p>
+    <div class="recipeContainer">
+      <h2><%= recipe.title %></h2>
+      <div class="imgContainer">
+        <img src="/<%= recipe.image %>" alt="recipeImage" />
+      </div>
+      <!-- <p><%= recipe.category %></p> -->
+      <div id="ingredientsList">
+        <span>Ingredients:</span>
+        <% recipe.ingredients.forEach((el)=> { %>
+        <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
+        <% }) %>
+      </div>
+      <div>
+        <span>Instructions:</span>
+        <p><%= recipe.body %></p>
+      </div>
     </div>
   </div>
   <%- include("./partials/footer.ejs") %>

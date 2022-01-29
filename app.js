@@ -41,7 +41,7 @@ app.get('*', checkUser);
 app.post('*', checkUser);
 app.put('*', checkUser);
 app.get('/', (req, res) => {
-  res.render('home', { title: 'Home' });
+  res.redirect('/recipes');
 });
 app.use('/recipes', recipeRoutes);
 app.use(authRoutes);
