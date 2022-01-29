@@ -141,6 +141,18 @@ const recipe_category_get = (req, res) => {
     });
 };
 
+const recipe_search_get = (req, res) => {
+  searchParam = req.query.title;
+  Recipe.find({ title: { $regex: searchParam, $options: 'i' } })
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('recipes', { recipes: result, title: 'All Recipes' });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 module.exports = {
   recipe_index,
   recipe_details,
@@ -151,4 +163,5 @@ module.exports = {
   recipe_edit_get,
   recipe_edit_put,
   recipe_category_get,
+  recipe_search_get,
 };

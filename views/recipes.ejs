@@ -3,16 +3,21 @@
   <%- include("./partials/nav.ejs") %>
   <div class="content">
     <div class="recipeContainer">
+      <h2>Recipes</h2>
       <div id="titleContainer">
-        <input type="text" />
-        <h2>All Recipes</h2>
         <ul class="links" id="categoryList">
           <li><a href="/recipes/category/breakfast">breakfast</a></li>
           <li><a href="/recipes/category/lunch">lunch</a></li>
           <li><a href="/recipes/category/dinner">dinner</a></li>
           <li><a href="/recipes/category/dessert">dessert</a></li>
           <li><a href="/recipes/category/snack">snack</a></li>
+          <li><a href="/recipes/">All</a></li>
         </ul>
+        <form action="/recipes/search/search" method="GET">
+          <label for="title">Search:</label>
+          <input type="text" id="title" name="title" required />
+          <button class="btn" id="searchBtn">Go</button>
+        </form>
       </div>
       <div class="recipes">
         <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>

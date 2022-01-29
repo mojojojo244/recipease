@@ -41,6 +41,7 @@ router.get('/myRecipes', requireAuth, recipeController.myRecipes_get);
 router.get('/', recipeController.recipe_index);
 router.post('/', upload.single('image'), recipeController.recipe_create_post);
 router.get('/category/:category', recipeController.recipe_category_get);
+router.get('/search/:search', recipeController.recipe_search_get);
 router.get('/:id', recipeController.recipe_details);
 router.delete('/:id', recipeController.recipe_delete);
 

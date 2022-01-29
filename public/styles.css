@@ -120,7 +120,8 @@ footer {
 #submitBtn:hover,
 #loginBtn:hover,
 #signBtn:hover,
-.customUpload:hover {
+.customUpload:hover,
+#searchBtn:hover {
   background: hsl(205, 78%, 60%);
 }
 .inputDiv {
@@ -165,6 +166,7 @@ input[type='file'] {
 #titleContainer {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .single,
