@@ -30,6 +30,9 @@ ul {
 a {
   text-decoration: none;
 }
+#logo {
+  width: 200px;
+}
 
 .content {
   min-height: 80vh;
