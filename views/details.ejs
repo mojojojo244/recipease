@@ -9,7 +9,7 @@
           <h2 id="detailsTitle"><%= recipe.title %></h2>
           <span class="detailsHeading">Ingredients:</span>
           <% recipe.ingredients.forEach((el)=> { %>
-          <p><%= el.ingredient + " " + el.qty + " " + el.qtyType %></p>
+          <p><%= el.qty + " " + el.qtyType + " " + el.ingredient%></p>
           <% }) %>
         </div>
       </div>
